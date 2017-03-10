@@ -19,8 +19,8 @@ from clarifai.rest import ClarifaiApp
 from clarifai.rest import Image as ClImage
 
 
-def rgb2gray(rgb):
-    '''Return the grayscale version of the RGB image rgb as a 2D numpy array
+def rgb2heat(rgb):
+    '''Return the heatmap version of the RGB image rgb as a 2D numpy array
     whose range is 0..1
     Arguments:
     rgb -- an RGB image, represented as a numpy array of size n x m x 3. The
@@ -28,11 +28,11 @@ def rgb2gray(rgb):
     '''
 
     r, g, b = rgb[:,:,0], rgb[:,:,1], rgb[:,:,2]
-    gray = 0.2989 * r + 0.5870 * g + 0.1140 * b
+    heat = 0.2989 * r + 0.5870 * g + 0.1140 * b
 
-    return gray/255.
+    return heat/255.
 
-im = imread('search area 1c.tif')
+im = imread('pic2.jpg')
 im = rgb2gray(im)
 imshow(im)
 plt.show()
@@ -40,10 +40,12 @@ imsave('s1.jpg', im)
 
 app = ClarifaiApp('oar_ugwDyUJRO448FOMx6q3MlRT680u5vBjv6Pw7', '5ZA02j6KTN3JTbOQ1yJ6_WdSHDA1nSceNLFdWOup')
 model = app.models.get('color', model_type='color')
+
 img = ClImage(filename='s1.jpg')
 info = model.predict([img])
-#print len(info['outputs'][0]['data']['colors'])
-#print info['outputs'][0]['data']['colors']
+#print info
+
+# Print hex representation of the colors, the name of colors, and the percentage it covers on the image
 for i in range(len(info['outputs'][0]['data']['colors'])):
     print str(info['outputs'][0]['data']['colors'][i]['raw_hex']) + "\t" + str(info['outputs'][0]['data']['colors'][i]['value'] * 100.0) + "%\t" +  str(info['outputs'][0]['data']['colors'][i]['w3c']['name'])
 

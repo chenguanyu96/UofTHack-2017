@@ -1,4 +1,7 @@
-# UofTHack-2017
-This repository will be used for UofT Hackathon 2017. It will include the work done throughout the hackathon and possibly future goals and next steps. The event will take place at University of Toronto, from Jan 20th to 22nd. 
+# UofTHacks 2017
+This repository is for UofTHacks IV 2017 RCAF challenge. It includes code that is still in development and concepts. The missions is as follows:
+1. Given a set of images with real targets please formulate a creative way of finding these targets using free/open source software and web services
+2. Can a cell phone capability in a dead zone (with no cellular service) be utilized to help the air force pinpoint that target?
+## Mission 1
 
-**This was presented to Defense Reseearch and Development Canada (DRDC) as a pitch.**
+## Mission 2
